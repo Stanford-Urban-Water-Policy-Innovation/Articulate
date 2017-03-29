@@ -1,0 +1,3 @@
+# Copyright 2017 The Board of Trustees of the Leland Stanford Junior University.
+# Direct inquiries to Nick Roby (nroby@stanford.edu) 
+# or PI Newsha Ajami (newsha@stanford.edu)
