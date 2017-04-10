@@ -18,10 +18,10 @@ News media plays an important role shaping public opinion and attitudes. However
 5.	License
 6.  Contact
 
-## I. Installation
+## 1. Installation
 The software environment used by this program is Python version 2.7 with the following modules:  tkinter.py, serverscsv.py, time.py, datetime.py, googleapiclient.discovery.py, ast.py, numpy.py, pandas.py, sys.py, and dateutil.py. The program uses Google CSE API client, which requires internet access for use. The user must also create an account with Google CSE API client to obtain an API key and must also set up their custom search engine (see https://developers.google.com/custom-search/docs/overview for more information).
 
-## II. Usage
+## 2. Usage
 
 **(i) Background**
 
@@ -50,15 +50,15 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 2. Second Step
 3. Third Step...
 
-## Contributing
+## 3. Contributing
 
 I am looking to refine the method for finding the site specific code, to make it more user friendly. All other contributions can be emailed to ____
 
-## Credits
+## 4. Credits
 
-## License 
+## 5. License 
 See copyright.txt and LICENSE for more information.
 
-## Contact
+## 6. Contact
 For more information about Stanford's Urban Water Policy and Innovation Team please contact Newsha Ajami, Director of Urban Water Policy at newsha at stanford.edu. 
 
