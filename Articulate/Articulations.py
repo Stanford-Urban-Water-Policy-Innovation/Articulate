@@ -31,8 +31,8 @@ def getdate(time_step,refdate_str):
 #The Developer Keys are monitored and exchanged if there is an error with one Developer Key
 #If all Developer Keys have been used by the point, the code will reset to the first Key
 #If the user would like to stop the program, they have the option at that point to exit
-def DKtest(DKcount,DKcheck,DKnum,current_day,search_per):
-    if DKcheck == DKcount or DKcount >= search_per:
+def DKtest(DKcount,DKcheck,DKnum,current_day):
+    if DKcheck == DKcount or DKcount >= 100:
         print 'Possible DKcount off, changed DKnum: CHECK:%s, COUNT:%s, NUM:%s' %(DKcheck,DKcount,DKnum)
         DKnum = DKnum + 1
         DKcount = 0
