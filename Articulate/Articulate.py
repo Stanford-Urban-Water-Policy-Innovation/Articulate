@@ -186,7 +186,7 @@ def articulate():
                     while rerun_val == 1:
                         global res
                         res,rerun_val,DKcount,DKcheck,DKnum,current_day = art.runquery(
-                            DK[DKnum],
+                            DK,
                             media_sites[n],
                             searchwords[k],
                             index,
