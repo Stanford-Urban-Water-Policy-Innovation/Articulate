@@ -31,7 +31,7 @@ def getdate(time_step,refdate_str):
 #The Developer Keys are monitored and exchanged if there is an error with one Developer Key
 #If all Developer Keys have been used by the point, the code will reset to the first Key
 #If the user would like to stop the program, they have the option at that point to exit
-def DKtest(DKcount,DKcheck,DKnum,current_day):
+def DKtest(DKcount,DKcheck,DKnum,current_day,DK):
     if DKcheck == DKcount or DKcount >= 100:
         print 'Possible DKcount off, changed DKnum: CHECK:%s, COUNT:%s, NUM:%s' %(DKcheck,DKcount,DKnum)
         DKnum = DKnum + 1
@@ -88,7 +88,7 @@ def runquery(
     excludeterms,
     ):
     try:
-        service = build("customsearch", "v1", developerKey=DK)
+        service = build("customsearch", "v1", developerKey=DK[DKnum])
         query = 'site:%s "%s"' %(media,search)
         res = service.cse().list(
             q = query,
@@ -102,7 +102,7 @@ def runquery(
         DKcount += 1
         rerun_val = 0
     except:
-        res,rerun_val,DKcount,DKcheck,DKnum,current_day = DKtest(DKcount,DKcheck,DKnum,current_day)
+        res,rerun_val,DKcount,DKcheck,DKnum,current_day = DKtest(DKcount,DKcheck,DKnum,current_day,DK)
     return res,rerun_val,DKcount,DKcheck,DKnum,current_day
 
 #media source specific code is used to extract and filter information from various sources
