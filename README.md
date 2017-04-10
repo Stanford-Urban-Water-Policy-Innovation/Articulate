@@ -19,7 +19,7 @@ News media plays an important role shaping public opinion and attitudes. However
 6.  Contact
 
 ## 1. Installation
-The software environment used by this program is Python version 2.7 with the following modules:  tkinter.py, serverscsv.py, time.py, datetime.py, googleapiclient.discovery.py, ast.py, numpy.py, pandas.py, sys.py, and dateutil.py. The program uses Google CSE API client, which requires internet access for use. The user must also create an account with Google CSE API client to obtain an API key and must also set up their custom search engine (see https://developers.google.com/custom-search/docs/overview for more information).
+The software environment used by this program is Python version 2.7 with the following modules:  tkinter.py, serverscsv.py, time.py, datetime.py, googleapiclient.discovery.py, ast.py, numpy.py, pandas.py, sys.py, and dateutil.py. The program uses Google CSE API client, which requires internet access for use. The user must also create an account with Google CSE API client to obtain an API key and must also set up their custom search engine (see https://developers.google.com/custom-search/docs/overview for more information). Information about installing this API is found here: https://developers.google.com/api-client-library/python/start/installation.
 
 ## 2. Usage
 
@@ -37,18 +37,21 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 
 **(iv) Set up**
 
-1. Download all necessary modules.
-2. Obtain a developer key
-3. Create Input Files
+1. Download Articulate folder which contains the Articulate.py Module as well as Articulations.py and a couple example input files.
+2. Download all necessary modules.
+3. Obtain a developer key
+4. Create Input Files
   > Note that the creation of the file containing the site specific code may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If this is too complicated, there is a suggested line of code that is available in the example.
-4. Determine your search requirements
-5. Test your search on a smaller time-frame to better approximate your appropriate time-step size
+5. Determine your search requirements
+6. Test your search on a smaller time-frame to better approximate your appropriate time-step size
 
 **(v) Executing Articulate**
 
-1. First Step
-2. Second Step
-3. Third Step...
+1. Run Articulate.py
+2. Input initial parameters
+3. When inputting searches:
+
+4. When inputting "or" terms:
 
 ## 3. Contributing
 
