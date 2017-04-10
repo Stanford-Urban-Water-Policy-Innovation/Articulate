@@ -270,7 +270,7 @@ def initiate():
     b3.grid(row=2, column=2, padx=4, pady=2)
     
     global b4
-    b4 = Button(master, text='Enter All and Exit', width=20, command=master.destroy)
+    b4 = Button(master, text='Next', width=20, command=master.destroy)
     
     global L4
     L4 = Label(master, text='Cannot Run With Given Parameters')
@@ -465,7 +465,7 @@ def input_files():
     b3.grid(row=2, column=2, padx=4, pady=2)
     
     global b4
-    b4 = Button(master, text='Enter All and Exit', width=20, command=master.destroy)
+    b4 = Button(master, text='Next', width=20, command=master.destroy)
     
     global L4
     L4 = Label(master, text='Cannot Run With Given Parameters')
@@ -523,7 +523,7 @@ def or_terms(search):
     b1.grid(row=1, column=2, padx=4, pady=2)
     
     global b4
-    b4 = Button(master, text='Next', width=20, command=master.destroy)
+    b4 = Button(master, text='Run Articulate', width=20, command=master.destroy)
     b4.grid(row=2, column=1, padx=4, pady=2)
 
     mainloop()
