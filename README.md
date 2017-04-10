@@ -37,10 +37,10 @@ i) The creation of the file containing the site specific code may take time and 
 4) Determine your search requirements
 5) Test your search on a smaller time-frame to better approximate your appropriate time-step size
 
-E) Executing Articulate
+III. Executing Articulate
 Step-by-step?
 
-Contributing
+IV. Contributing
 I am looking to refine the method for finding the site specific code, to make it more user friendly. All other contributions can be emailed to ____
 
-Credits
+V. Credits
