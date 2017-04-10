@@ -8,11 +8,13 @@ News media plays an important role shaping public opinion and attitudes. However
 ## Table of Contents 
 1.	Installation
 2.	Usage 
-    1. Background
-    2. Software Inputs
-    3. Software Outputs
-    4. Set up
-    5. Executing Articulate
+    (i) Background
+    (ii) Software Inputs
+    (iii) Software Outputs
+        a) Reading the Database File
+        b) The Tally File
+    (iv) Set up
+    (v) Executing Articulate
 3.	Contributing
 4.	Credits
 5.	License
@@ -34,6 +36,8 @@ The software takes both string and csv inputs. There are two distinct csv inputs
 **(iii) Software Outputs**
 
 Articulate produces two types of spreadsheet outputs. The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. The second output is a database file containing important identifying information about each article such as date published, title, author, and more.
+
+    
 
 **(iv) Set up**
 
