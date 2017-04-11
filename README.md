@@ -14,7 +14,7 @@ News media plays an important role shaping public opinion and attitudes. However
     (ii) Software Inputs
     
     (iii) Software Outputs
-    :
+    
         a) Reading the Database File
         b) The Tally File
     
