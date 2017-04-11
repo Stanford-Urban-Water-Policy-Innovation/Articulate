@@ -41,11 +41,11 @@ The software takes both string and csv inputs. There are two distinct csv inputs
 Articulate produces two types of spreadsheet outputs. The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. The second output is a database file containing important identifying information about each article such as date published, title, author, and more.
 
 
-        1) Reading the Database File
-        If the type (ie. article, image, video, etc) of a specific result cannot be determined, the title is returned as "miss" and no         other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply           return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of             range".
+   1) Reading the Database File
+   If the type (ie. article, image, video, etc) of a specific result cannot be determined, the title is returned as "miss" and no          other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply            return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of            range".
         
-        2) The Dataframe File (Tally File)
-        The dataframe files will return a tally count for each source in each month. Each file returned will be for an individual               search.
+   2) The Dataframe File (Tally File)
+   The dataframe files will return a tally count for each source in each month. Each file returned will be for an individual              search.
     
 
 **(iv) Set up**
