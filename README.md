@@ -71,7 +71,7 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 2. Input initial parameters
 3. When inputting searches:
 
-    >
+    >Once you specify a search you would like to articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.
 
 4. When inputting "or" terms:
 
