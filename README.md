@@ -59,7 +59,7 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 1. Download Articulate folder which contains the Articulate.py Module as well as Articulations.py and a couple example input files.
 2. Download all necessary modules.
 3. Obtain a developer key
-4. Create Input Files
+4. Create Input Files (all files should maintain the same format exemplified in the examples given)
   > Note that the creation of the file containing the site specific code may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If this is too complicated, there is a suggested line of code that is available in the example.
 5. Determine your search requirements
 6. Test your search on a smaller time-frame to better approximate your appropriate time-step size
