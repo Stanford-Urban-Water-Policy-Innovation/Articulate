@@ -216,13 +216,7 @@ miss = 0
 itval = 1
 
 #DK is an array with all developer keys
-DK = ['AIzaSyBilrGb3kC2QWto52SKKOATPiLOZsbhNro',
-    'AIzaSyCfOCEo0UAgn4xxi8ujzwpLQz3rdjIOMYA',
-    'AIzaSyAbT0JKJeWw9kBFnJA0xLb9oRhAb3eFUIE',
-    'AIzaSyAcuvJhmNsmSeuIgUF6c_LzIcmxRHW8nUA',
-    'AIzaSyA4jTMoTLQ84uXEPrNggzXv-S38gT2Lrvw',
-    'AIzaSyC05WyhgmafGYoaSPzw3oA5TqhInYi75pI',
-    ]
+DK = ['Input your own']
 DKnum = 0
 DKcount = 0
 DKcheck = 0
