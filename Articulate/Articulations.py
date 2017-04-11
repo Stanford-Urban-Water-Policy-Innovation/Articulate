@@ -143,7 +143,7 @@ def getinfo(res,day_list,site,search,sites_key,n,index,commands,article_excluded
             day_list.append(day)
             year = day.year
             dataframe_index = day+pd.tseries.offsets.MonthEnd()
-            if dataframe_index > article_tally.index[0] and dataframe_index < article_tally.index[-1]:
+            if dataframe_index >= article_tally.index[0] and dataframe_index <= article_tally.index[-1]:
                 current_val = article_tally.loc[dataframe_index][sites_key[n]]
                 article_tally.set_value(dataframe_index,sites_key[n],current_val+1)
             else:
