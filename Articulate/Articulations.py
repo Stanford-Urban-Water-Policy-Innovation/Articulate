@@ -65,6 +65,10 @@ def DKtest(DKcount,DKcheck,DKnum,current_day,DK,rerun_val):
         res = ['Must Rerun']
         print res[0]
         print 'rerun_val = %s' %(rerun_val)
+        if rerun_val == 1:
+            print 'Will rerun last query submission'
+        else:
+            print 'Did not rerun last query submission'
         return res,rerun_val,DKcount,DKcheck,DKnum,current_day
     else:
         res = ['must rerun']
