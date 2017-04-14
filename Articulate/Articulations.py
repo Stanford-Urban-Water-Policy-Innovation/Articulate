@@ -91,7 +91,7 @@ def runquery(
     orterms,
     excludeterms,
     rerun_val,
-    inclterms
+    inclterms,
     ):
     try:
         service = build("customsearch", "v1", developerKey=DK[DKnum])
