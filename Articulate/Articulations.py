@@ -586,3 +586,58 @@ def search_terms():
     b4.grid(row=1, column=1, padx=4, pady=2)
 
     mainloop()
+
+def storevarincl():
+    for num in c_dict.keys():
+        if val[num].get() == 1:
+            var_inclstore[num] = var_incldict[num].get()
+        else:
+            var_inclstore[num] = 0
+
+def callback1incl():
+    counter = lcounter[-1]
+
+    print 'Entered "%s"' %(e1.get())
+    val[counter] = IntVar()
+    var_incldict[counter] = StringVar()
+    var_incldict[counter].set(e1.get())
+    c_dict[counter] = Checkbutton(master, text=var_incldict[counter].get(), variable=val[counter], command=storevarincl)
+    c_dict[counter].grid(row=counter+2,column=1)
+    b4.grid_forget()
+    b4.grid(row=counter+3, column=1, padx=4, pady=2)
+
+    counter += 1
+    lcounter.append(counter)
+
+def incl_terms(search):
+    global master
+    master = Tk()
+    
+    Label(master, text='For %s' %search).grid(row=0, sticky=W)
+    Label(master, text='Input "Include" Terms (If you want it as a quote it must have quotation marks) ie "Articulate Software": ').grid(row=1, sticky=W)
+    
+    global e1
+    e1 = Entry(master)
+    e1.grid(row=1, column=1)
+    
+    global lcounter
+    global var_incldict
+    global var_inclstore
+    global c_dict
+    global val
+    
+    lcounter = [0]
+    var_incldict = {}
+    var_inclstore = {}
+    c_dict = {}
+    val = {}
+
+    b1_text = 'Enter'
+    b1 = Button(master, text=b1_text, width=10, command=callback1incl)
+    b1.grid(row=1, column=2, padx=4, pady=2)
+    
+    global b4
+    b4 = Button(master, text='Next', width=20, command=master.destroy)
+    b4.grid(row=2, column=1, padx=4, pady=2)
+
+    mainloop()
