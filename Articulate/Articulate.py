@@ -13,7 +13,6 @@ import Articulations as art
 def articulate():
     
     # User inputs
-    #_______________________________________________________________________________________________
     
     #Creates GUI to initiate program with the proper files and specifications
     #Returns var1, var2, and var3
@@ -127,8 +126,18 @@ def articulate():
             ors_list.append(art.var_orstore[or_keys])
         orterms[or_count] = tuple(ors_list)
         or_count += 1
-    
-    #_______________________________________________________________________________________________
+
+    #Collect "incl" Terms for each search
+    incl_count = 0
+    inclterms = {}
+    for search in searchwords:
+        art.incl_terms(search)
+        incl_list = []
+        for incl_keys in art.var_inclstore.keys():
+            incl_list.append(art.var_inclstore[incl_keys])
+        inclterms[incl_count] = tuple(incl_list)
+        incl_count += 1
+
     
     #set up variable dateres, used to restrict search results to after 1/1/2005
     today = datetime.now()
