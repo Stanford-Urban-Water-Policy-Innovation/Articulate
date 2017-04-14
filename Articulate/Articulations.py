@@ -91,6 +91,7 @@ def runquery(
     orterms,
     excludeterms,
     rerun_val,
+    inclterms
     ):
     try:
         service = build("customsearch", "v1", developerKey=DK[DKnum])
@@ -98,7 +99,7 @@ def runquery(
         res = service.cse().list(
             q = query,
             cx ='015907315053208763487:ihyujd_at7y',
-            exactTerms = 'California',
+            exactTerms = inclterms,
             orTerms = orterms,
             excludeTerms = excludeterms,
             start = index,
