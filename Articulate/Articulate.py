@@ -207,7 +207,8 @@ def articulate():
                             current_day,
                             orterms[k],
                             excludeterms[k],
-                            rerun_val)
+                            rerun_val,
+                            inclterms[k])
                     n_res1 = res['queries']['request'][0]['count']
                     n_res2 = int(res['queries']['request'][0]['totalResults'])
                     if n_res1 > 0 and n_res2 > 0:
