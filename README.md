@@ -20,9 +20,10 @@ News media plays an important role shaping public opinion and attitudes. However
     
     (v) Executing Articulate
 3.	Contributing
-4.	Credits
-5.	License
-6.  Contact
+4.  GitHub Repository
+5.	Credits
+6.	License
+7.  Contact
 
 
 ## 1. Installation
@@ -87,23 +88,24 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 
 ## 3. GitHub Repository
 
-There are two ways to run Articulate- through a GUI or manually
-    
-    > The python scripts in the Articulate folder use the GUI
-    > The codes in the 
+There are two ways to run Articulate- through a GUI or manually:
 
-## 3. Contributing
+1. The code in the Articulate folder uses a GUI.
+
+2. The code in the Example_Script folder does not use a GUI and is run as a Python script. If you do not want to use the GUI, you can fork and modify this code to fit your needs. 
+
+## 4. Contributing
 
 I am looking to refine the method for finding the site specific code, to make it more user friendly. For more information about contributions, please contact the noted contact below.
 
 
-## 4. Credits
+## 5. Credits
 This code was developed by Nick Roby at Stanford University. 
 
-## 5. License 
+## 6. License 
 See copyright.txt and LICENSE for more information.
 
 
-## 6. Contact
+## 7. Contact
 For more information about Stanford's Urban Water Policy and Innovation Team please contact Newsha Ajami, Director of Urban Water Policy at newsha at stanford.edu. 
 
