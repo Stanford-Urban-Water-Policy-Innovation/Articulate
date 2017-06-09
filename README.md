@@ -75,12 +75,12 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 
 4. When inputting "or" and "include" terms:
 
+    >The search will be performed for the main search term AND one or more of the "or" terms AND all "include" terms.
+    
     >"or" terms, as defined by google, "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." These are input for each search specified when running articulate. 
     
-    >"include" terms must be found in each result in addition to the initial search term. Google defines these as "exactTerms"
-    
-   > The search will be performed for the main search term AND one or more of the "or" terms AND all "include" terms.
-
+   >"include" terms must be found in each result in addition to the initial search term. Google defines these as "exactTerms."
+   
 5. When resetting developer keys:
     
     >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the pregram will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
