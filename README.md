@@ -88,7 +88,7 @@ I am looking to refine the method for finding the site specific code, to make it
 
 
 ## 4. Credits
-
+This code was developed by Nick Roby at Stanford University. 
 
 ## 5. License 
 See copyright.txt and LICENSE for more information.
