@@ -71,11 +71,15 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 2. Input initial parameters
 3. When inputting searches:
 
-    >Once you specify a search you would like to articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.
+    >Once you specify a search you would like articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.
 
-4. When inputting "or" terms:
+4. When inputting "or" and "include" terms:
 
-    >"or" terms, as defined by google, "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." These are input for each search specified when running articulate.
+    >"or" terms, as defined by google, "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." These are input for each search specified when running articulate. 
+    
+    >"include" terms must be found in each result in addition to the initial search term. Google defines these as "exactTerms"
+    
+   > The search will be performed for the main search term AND one or more of the "or" terms AND all "include" terms.
 
 5. When resetting developer keys:
     
