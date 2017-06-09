@@ -47,7 +47,7 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 
 1) Reading the Database File
    
-   If the type (ie. article, image, video, etc) of a specific result cannot be determined, the title is returned as "miss" and no          other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply            return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of            range".
+   If the type (ie. article, image, video, etc) of a specific result cannot be determined, the title is returned as "miss" and no other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of range".
         
 2) The Dataframe File (Tally File)
    
@@ -85,6 +85,12 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
     
     >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the pregram will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
 
+## 3. GitHub Repository
+
+There are two ways to run Articulate- through a GUI or manually
+    
+    > The python scripts in the Articulate folder use the GUI
+    > The codes in the 
 
 ## 3. Contributing
 
