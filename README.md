@@ -27,7 +27,7 @@ News media plays an important role shaping public opinion and attitudes. However
 
 
 ## 1. Installation
-The software environment used by this program is Python version 2.7 with the following modules:  tkinter.py, serverscsv.py, time.py, datetime.py, googleapiclient.discovery.py, ast.py, numpy.py, pandas.py, sys.py, and dateutil.py. The program uses Google CSE API client, which requires internet access for use. The user must also create an account with Google CSE API client to obtain an API key and must also set up their custom search engine (see https://developers.google.com/custom-search/docs/overview for more information). Information about installing this API is found here: https://developers.google.com/api-client-library/python/start/installation.
+The software environment used by this program is Python version 2.7 with the following modules:  csv.py, time.py, datetime.py, googleapiclient.discovery.py, ast.py, numpy.py, pandas.py, sys.py, dateutil.py, CookieJar.py, urllib.py, urllib2.py, and Tkinter.py. The program uses Google CSE API client, which requires internet access for use. The user must also create an account with Google CSE API client to obtain an API key and must also set up their custom search engine (see https://developers.google.com/custom-search/docs/overview for more information). Information about installing this API is found here: https://developers.google.com/api-client-library/python/start/installation.
 
 
 ## 2. Usage
@@ -39,7 +39,7 @@ The backbone of this software is the Google CSE API client, a tool that allows t
 
 **(ii) Software Inputs**
 
-The software takes both string and csv inputs. There are two distinct csv inputs: (1) a csv file that contains the code necessary to extract items of information from the search results and (2) a csv file containing the websites to be searched. The rest of the inputs are string inputs. This includes the search words, Developer Keys, terms to exclude, terms search as “or terms” (“or terms” are terms that could also be included in a search, but do not necessarily need to be present i.e. water or snow), the date range, the date step size (the date step size is the time interval to be use in the representation of results), and the name of the database in which the information should be created. All of these are input using a GUI.
+Articulate requires a set of comma-separated-values (csv) and string inputs. There is one distinct csv input: a csv file that contains the specific news websites to be searched and the code to access each website-specific dictionary necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. String inputs include: (1) Developer Key(s), (2) the search terms, (3) terms to include, (4) terms searched as “or terms” (“or terms” are terms that could also be included in a search, but do not necessarily need to be present i.e. water or snow), (5) the date range of interest, (6) the date step size (the date step size is the time interval to be used in the representation of results), and (7) the name of the database in which the information should be stored. It should be noted that all terms in the query are case sensitive (search, include, and or terms). All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
 
 
 **(iii) Software Outputs**
@@ -60,7 +60,7 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 1. Download Articulate folder which contains the Articulate.py Module as well as Articulations.py and a couple example input files.
 2. Download all necessary modules.
 3. Obtain a developer key
-4. Create Input Files (all files should maintain the same format exemplified in the examples given)
+4. Create Input File (file should maintain the same format exemplified in the example given)
   > Note that the creation of the file containing the site specific code may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If this is too complicated, there is a suggested line of code that is available in the example.
 5. Determine your search requirements
 6. Test your search on a smaller time-frame to better approximate your appropriate time-step size
@@ -80,11 +80,11 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
     
     >"or" terms, as defined by google, "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." These are input for each search specified when running articulate. 
     
-   >"include" terms must be found in each result in addition to the initial search term. Google defines these as "exactTerms."
+   >"include" terms must be found in each result in addition to the initial search term. Google defines these as "exactTerms." It is suggested that each search only have one associated include term.
    
 5. When resetting developer keys:
     
-    >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the pregram will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
+    >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the program will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
 
 ## 3. GitHub Repository
 
