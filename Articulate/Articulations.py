@@ -10,67 +10,76 @@ import numpy as np
 import pandas as pd
 import sys
 import dateutil
+import urllib
+import urllib2
+from cookielib import CookieJar
 from Tkinter import *
 
 #Using the specified time step the total timeframe is divided into time steps
+#The output is a formatted list of dates corresponding to each time window
 def getdate(time_step,refdate_str):
     ref = pd.Timestamp(refdate_str)
     today = pd.Timestamp(datetime.now())
     date_step = pd.date_range(
         start=ref,
-        end=today,
-        freq=time_step[-1])
-    dateseries = pd.Series(range(len(date_step)),
-        date_step).resample(time_step).mean()
+        end=today)
+    #resampling to time window. 
+    dateseries = pd.Series(range(len(date_step)),date_step).resample(time_step).mean()
     dates2adj = dateseries.index
-    dates2use = dates2adj.shift(
+    dates2usem = dates2adj.shift(
         int((ref-dates2adj[0]).days),
         freq=pd.datetools.day)
+    if dates2usem[-1] != today:
+        dates2use = dates2usem.append((pd.DatetimeIndex([today])))
+    else:
+        dates2use = dates2usem
     return dates2use
 
 #The Developer Keys are monitored and exchanged if there is an error with one Developer Key
 #If all Developer Keys have been used by the point, the code will reset to the first Key
 #If the user would like to stop the program, they have the option at that point to exit
+#DKcount is the number of queries that have been used for that DK for that run (not for that day)
+#DKcheck is the count before the latest query submission
+#DKnum is the total umber of DKs that the user has entered/has available
+#rerun_val is binary- 1 means rerun the query, 0 means continue
 def DKtest(DKcount,DKcheck,DKnum,current_day,DK,rerun_val):
-    if DKcheck == DKcount or DKcount >= 100:
+    if DKcheck == DKcount or DKcount >= 10000:
         print 'Possible DKcount off, changed DKnum: CHECK:%s, COUNT:%s, NUM:%s' %(DKcheck,DKcount,DKnum)
-        DKnum = DKnum + 1
-        DKcount = 0
-        DKcheck = 0
-        if DKnum >= len(DK):
+        DKnum = DKnum + 1 #go to next DK
+        DKcount = 0 #reset count
+        DKcheck = 0 #reset check
+        if DKnum >= len(DK): #if trying to go beyond number you actually have
             DKrun = 1
             DKnum_holder = len(DK)
             while DKrun == 1:
-                DKnum_holder = input('Set DK back to 0:')
+                DKnum_holder = input('Set DK back to 0 or "Exit":')
                 print DKnum_holder
                 if DKnum_holder < len(DK) and DKnum_holder >= 0:
                     DKrun = 0
                     print 'DKnum has been reset to %s' %(DKnum_holder)
                     DKnum = int(DKnum_holder)
-                    while datetime.now().day == current_day:
+                    while datetime.now().day == current_day: #while today is still today
                         print 'still waiting'
-                        time.sleep(300) #sleep for 300 seconds
-                elif DKnum_holder == 'Exit':
+                        time.sleep(300) #sleep for 300 seconds and then try again
+                elif DKnum_holder == 'Exit': #if you dont want to wait for developer keys to reset, type "Exit"
                     DKrun = 0
                     sys.exit()
                     print 'exiting'
                     sys.exit()
                 else:
                     print 'Expected Error'
-            current_day = datetime.now().day
-        else:
-            current_day = datetime.now().day
+            current_day = datetime.now().day #left the loop, update current day
         DKcheck = DKcount
-        print 'Switched DK'
+        print 'Switched DK to %s' %(DK[DKnum])
         res = ['Must Rerun']
         print res[0]
         print 'rerun_val = %s' %(rerun_val)
         if rerun_val == 1:
-            print 'Will rerun last query submission'
+            print 'Will rerun last query submission' #if there was an error but it's not due to DK count = 10,000
         else:
-            print 'Did not rerun last query submission'
+            print 'Did not rerun last query submission' #if there was error due to DK count = 10,000
         return res,rerun_val,DKcount,DKcheck,DKnum,current_day
-    else:
+    else: # denotes that it has errored once and will check again
         res = ['must rerun']
         DKcheck = DKcount
         rerun_val = 1
@@ -81,7 +90,7 @@ def runquery(
     DK,
     media,
     search,
-    index,
+    index, #the search index. I.e. the first result of page 2 of the search is index 11. Cannot exceed 92
     date_start,
     date_end,
     DKcount,
@@ -89,7 +98,6 @@ def runquery(
     DKnum,
     current_day,
     orterms,
-    excludeterms,
     rerun_val,
     inclterms,
     ):
@@ -99,74 +107,190 @@ def runquery(
         res = service.cse().list(
             q = query,
             cx ='015907315053208763487:ihyujd_at7y',
-            exactTerms = inclterms,
-            orTerms = orterms,
-            excludeTerms = excludeterms,
+            exactTerms = inclterms, # Identifies a phrase that all documents in the search results must contain.
+            orTerms = orterms, # Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms.
             start = index,
             sort = 'date:a,date:r:%s:%s' %(date_start,date_end)
             ).execute()
         DKcount += 1
-        rerun_val = 0
-    except:
+        rerun_val = 0 #If it works, it doesn't rerun
+    except: #if it doesn't work, it runs DKtest
         res,rerun_val,DKcount,DKcheck,DKnum,current_day = DKtest(DKcount,DKcheck,DKnum,current_day,DK,rerun_val)
     return res,rerun_val,DKcount,DKcheck,DKnum,current_day
 
-#media source specific code is used to extract and filter information from various sources
-def getinfo(res,day_list,site,search,sites_key,n,index,commands,article_excluded,title_missed,article_tally,error):
+
+#media source specific code is used to extract and filter information from various sources. n is the site index
+def getinfo(
+    res,
+    day_list,
+    site,
+    search,
+    sites_key,
+    n,
+    index,
+    commands,
+    article_excluded,
+    title_missed,
+    article_tally,
+    error,
+    title_store,
+    orterm):    
     
     #Extract Type
     try:
-        media_type = str(eval(commands['type'][n])) #adjust in excel for all three ways of extracting
+        media_type = str(eval(commands[sites_key[n]]['type'])) #adjust in excel for all three ways of extracting.
     except:
         media_type = 'pass'
         error = error + 1
+    
+    if media_type == 'article':
+        try:
+            media_type2 = str(eval(commands[sites_key[n]]['type2']))
+        except:
+            media_type2 = media_type
+            
+        if media_type != media_type2:
+            media_type = 'pass2'
+            error = error + 1
+    else:
+        try:
+            media_type = str(eval(commands[sites_key[n]]['type2']))
+        except:
+            media_type = 'pass1'
+    
+    
+    #this section formats search variable to remove the quotation marks around the search terms IF necessary (i.e. Press Democrat newspaper)
+    temp_search = search
+    global new_search
+    new_search = ''
+    while '"' in search:
+        print new_search
+        if temp_search[0] != '"': 
+            new_search+temp_search[0]
+            temp_search = temp_search[1:]
+        else:
+            temp_search = temp_search[1:]
+        search = new_search
+    
+    
+    #false reporting errors 1 and 2 indicate that the search terms were not found in the article despite being pulled by CSE
+    if media_type == 'article':
+        
+        if orterm == ():
+            orterm = search
+        
+        try:
+            link = [str(eval(commands[sites_key[n]]['keyword']))]
+        except:
+            link = ['none']
+        
+        try:
+            link.append(str(eval(commands[sites_key[n]]['keyword2'])))
+        except:
+            link.append('none')
+        
+        url_count = 0
+        while url_count < len(link):
+            url_str = link[url_count]
 
-#_____________________________________________________________________________________    
-    #Extract Title	
+            if url_str != 'none':
+                try:
+                    wbsite_toread = urllib.urlopen(url_str)
+                    wbsite = wbsite_toread.read()
+                    if len(wbsite) < len(search):
+                        sys.exit()
+                except:
+                    try:
+                        cj = CookieJar()
+                        opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+                        wbsite = opener.open(url_str).read()
+                    except:
+                        wbsite = search+' - '+url_str
+                        media_type = 'article_unchecked'
+                
+                if (search in wbsite and orterm in wbsite) or (search.lower() in wbsite and orterm.lower() in wbsite):
+                    media_type = 'article'
+                    break
+                else:
+                    media_type = 'false_reporting'+str(url_count+1)
+            url_count += 1
+
+                    
+    #Extract Title
     try:
-        title = eval(commands['title'][n]).encode('ascii','ignore')
+        title = eval(commands[sites_key[n]]['title']).encode('ascii','ignore')
     except KeyError:
+        print 'Title missed: %s' %(commands[sites_key[n]]['title'])
         title = 'miss'
     
+    if title in title_store and title != 'miss':
+        title = 'duplicate - ' + title
+
     #Extract Date
-    date_commands = commands['date'][n].split(', ')
+    date_commands = commands[sites_key[n]]['date'].split(', ')
     try:
         date = eval(date_commands[0][1:])
-    except:
-        try:
-            date_commands = commands['date'][10].split(', ')
-            date = eval(date_commands[0][1:])
-        except:
-            date = 'NA'
-    if date != 'NA':
+        
         try:
             day = eval(date_commands[1][:-1])
+            year = day.year
         except:
-            day = date
-            year = 'Not Yet Found'
-            article_excluded.append(title)
+            day = 'NA_try_again1'
+            year = 'NA_try_again1'
+            
+    except:
+        date = 'NA_try_again2'
+        day = 'NA_try_again2'
+        year = 'NA_try_again2'
+    
+    if type(day) != datetime:
+        if 'NA_try_again' in day:
+            date_commands = commands['ALL']['date'].split(', ') #the -1 denotes the last row of the site specific code csv which has a list of defaults
+            try:
+                date = eval(date_commands[0][1:])
+                
+                try:
+                    day = eval(date_commands[1][:-1])
+                    year = day.year
+                except:
+                    day = date
+                    year = 'Not yet found2' #not yet found means that we can't convert the date to datetime
+                                    
+            except:
+                if day == 'NA_try_again1':
+                    day = date
+                    year = 'Not yet found1'
+                else: #if none of the date extraction techniques have worked
+                    date = 'NA'
+                    day = 'NA'
+                    year = 'NA'
+    
+    if (date != 'NA') and (title != 'miss') and (title[:9] != 'duplicate') and ('article' in media_type):
+        
         if day != date and day < datetime.now():
             day_list.append(day)
             year = day.year
-            dataframe_index = day+pd.tseries.offsets.MonthEnd()
-            if dataframe_index >= article_tally.index[0] and dataframe_index <= article_tally.index[-1]:
-                current_val = article_tally.loc[dataframe_index][sites_key[n]]
-                article_tally.set_value(dataframe_index,sites_key[n],current_val+1)
+            dataframe_index = day+pd.tseries.offsets.MonthEnd() #if you want daily, weekly, or yearly look up pandas date offset notation
+            if dataframe_index >= article_tally.index[0] and dataframe_index <= article_tally.index[-1]: 
+                current_val = article_tally.loc[dataframe_index][sites_key[n]] #
+                print 'current tally is: %s for %s month' %(current_val+1,dataframe_index)
+                article_tally.set_value(dataframe_index,sites_key[n],current_val+1) #tally articles
+                title_store.append(title)
             else:
                 day = 'Fell outside of range'
-                year = 'NA'
+                year = 'NA_out'
                 article_excluded.append(title)
         else:
-            day = 'NA'
-            year = 'NA'
+            day = 'NA2'
+            year = 'NA2'
             article_excluded.append(title)
-        row = [site,search,title,day,year,media_type,res['items'][index]]
+        
+        row = [site,search,title,day,year,media_type,res['items'][index]] #building the database output file
+    
     else:
         title_missed.append(title)
-        row = [site,search,title,'NA','NA',media_type,res['items'][index]]
-    return row,article_excluded,title_missed,article_tally,error
-
-#_____________________________________________________________________________________    
+        row = [site,search,title,day,year,media_type,res['items'][index]]
+    return row,article_excluded,title_missed,article_tally,error,title_store  
 
 
 def remove_button():
@@ -276,7 +400,7 @@ def initiate():
     b3.grid(row=2, column=2, padx=4, pady=2)
     
     global b4
-    b4 = Button(master, text='Next', width=20, command=master.destroy)
+    b4 = Button(master, text='Enter All and Continue', width=20, command=master.destroy)
     
     global L4
     L4 = Label(master, text='Cannot Run With Given Parameters')
@@ -382,20 +506,11 @@ def get_keys():
             mainloop()
             
 def label_checkf():
-    #if len(varf1.get()) > 0 and len(varf2.get()) > 0 and len(varf3.get()) > 0:
-    if len(varf1.get()) > 0 and len(varf3.get()) > 0:
+    if len(varf1.get()) > 0:
         if varf1.get()[-4:] == '.csv':
-            #if varf2.get()[-4:] == '.csv':
-            if varf3.get()[-4:] == '.csv':
-                while L4.winfo_ismapped() == True:
-                    remove_label()
-                b4.grid(row=3, column=1)
-            else:
-                remove_button
-                L4.grid(row=3,column=1)
-            #else:
-                #remove_button
-                #L4.grid
+            while L4.winfo_ismapped() == True:
+                remove_label()
+            b4.grid(row=3, column=1)
         else:
             remove_button
             L4.grid(row=3,column=1)
@@ -433,51 +548,40 @@ def input_files():
 
     Label(master, text='Media Sites File (format is in .csv ... ie mediasites2.csv): ').grid(row=0, sticky=W)
     #Label(master, text='Keywords File (format is in .csv ... ie keywords.csv): ').grid(row=1, sticky=W)
-    Label(master, text='Site Specific Code File (format is in .csv ... ie codes.csv): ').grid(row=2, sticky=W)
     
     global e1
     #global e2
-    global e3
     
     e1 = Entry(master)
     #e2 = Entry(master)
-    e3 = Entry(master)
 
     e1.grid(row=0, column=1)
     #e2.grid(row=1, column=1)
-    e3.grid(row=2, column=1)
-
-    e1.insert(10,'mediasites2.csv')
-    #e2.insert(10,'keywords.csv')
-    e3.insert(10,'codes.csv')
     
     global varf1
     #global varf2
-    global varf3
     
     varf1 = StringVar()
     #varf2 = StringVar()
-    varf3 = StringVar()
 
     b1_text = 'Enter'
     #b2_text = 'Enter'
-    b3_text = 'Enter'
 
     b1 = Button(master, text=b1_text, width=10, command=callback1f)
     b1.grid(row=0, column=2, padx=4, pady=2)
     #b2 = Button(master, text=b2_text, width=10, command=callback2f)
     #b2.grid(row=1, column=2, padx=4, pady=2)
-    b3 = Button(master, text=b3_text, width=10, command=callback3f)
-    b3.grid(row=2, column=2, padx=4, pady=2)
     
     global b4
-    b4 = Button(master, text='Next', width=20, command=master.destroy)
+    b4 = Button(master, text='Enter All and Continue', width=20, command=master.destroy)
     
     global L4
     L4 = Label(master, text='Cannot Run With Given Parameters')
     L4.grid(row=4,column=1)
 
     mainloop()
+
+#________________________________________________________
 
 def storevar():
     for num in c_dict.keys():
@@ -529,10 +633,12 @@ def or_terms(search):
     b1.grid(row=1, column=2, padx=4, pady=2)
     
     global b4
-    b4 = Button(master, text='Run Articulate', width=20, command=master.destroy)
+    b4 = Button(master, text='Next', width=20, command=master.destroy)
     b4.grid(row=2, column=1, padx=4, pady=2)
 
     mainloop()
+
+#________________________________________________________
 
 def storewords():
     for num in c_dict.keys():
@@ -587,6 +693,8 @@ def search_terms():
     b4.grid(row=1, column=1, padx=4, pady=2)
 
     mainloop()
+
+#___________________________________________________________________________
 
 def storevarincl():
     for num in c_dict.keys():
