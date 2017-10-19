@@ -39,7 +39,18 @@ The backbone of this software is the Google CSE API client, a tool that allows t
 
 **(ii) Software Inputs**
 
-Articulate requires a set of comma-separated-values (csv) and string inputs. There is one distinct csv input: a csv file that contains the specific news websites to be searched and the code to access each website-specific dictionary necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. String inputs include: (1) Developer Key(s), (2) the search terms, (3) terms to include, (4) terms searched as “or terms” (“or terms” are terms that could also be included in a search, but do not necessarily need to be present i.e. water or snow), (5) the date range of interest, (6) the date step size (the date step size is the time interval to be used in the representation of results), and (7) the name of the database in which the information should be stored. It should be noted that all terms in the query are case sensitive (search, include, and or terms). All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
+Articulate requires a set of comma-separated-values (csv) and string inputs. 
+
+One distinct csv input: a csv file that contains the specific news websites to be searched and the code to access each website-specific dictionary necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. 
+
+String inputs include: 
+    (1) Developer Key(s) 
+    (2) Search term(s) 
+    (3) Include term(s)
+    (4) Or term(s)- terms that could also be included in a search, but do not necessarily need to be present i.e. if you were searching for articles on drought, these terms could be water or snow), 
+    (5) the date range of interest, 
+    (6) the date step size (the date step size is the time interval to be used in the representation of results), and 
+    (7) the name of the database in which the information should be stored. It should be noted that all terms in the query are case sensitive (search, include, and or terms). All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
 
 
 **(iii) Software Outputs**
@@ -66,7 +77,7 @@ Articulate produces two types of spreadsheet outputs. The first kind of outputs 
 6. Test your search on a smaller time-frame to better approximate your appropriate time-step size
 
 
-**(v) Executing Articulate**
+**(v) Executing Articulate using the GUI**
 
 1. Run Articulate.py
 2. Input initial parameters
