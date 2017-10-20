@@ -34,36 +34,40 @@ The software environment used by this program is Python version 2.7 with the fol
 
 **(i) Background**
 
-The backbone of this software is the Google CSE API client, a tool that allows the user to submit any Google search. The flexible and dynamic nature of Articulate is that it allows the user to input an array of parameters to be queried, providing the user with the capability to search various websites by date, quoted content, query, and other specifications. Articulate returns information about each of the up to ten results that occur per query, mimicking what would be returned as one page of results if the query was searched on Google’s search bar. The information within each result contains items including the title of the article, media type (i.e. video, article, etc.), author, short excerpt, content keywords, date of publication, and various other attributes. This output can be modified by changing the source code. The information for each article is extracted and stored within the user-specified database. The functionality of this tool allows the user to step through ten “pages” of the same search, up to the 100th result, the user is thus limited to only retrieve 100 results per search. Each query submission can retrieve up to 10 results, and each developer key gets 100 queries a day for free. After that, each 1000 queries used in a day is $5 and the user can submit up to 10,000 queries a day. This constraint limits the users number of searches (100 free). These (number of search results and number of searches) necessitate the development of the of the time-step method within the algorithm, which must be calibrated for each individual run, and is discussed later.
+The backbone of this software is the Google CSE API client, a tool that allows the user to submit any Google search. The flexible and dynamic nature of Articulate is that it allows the user to input an array of parameters to be queried, providing the user with the capability to search various websites by date, quoted content, query, and other specifications. Articulate returns information about each of the up to ten results that occur per query, mimicking what would be returned as one page of results if the query was searched on Google’s search bar. The information within each result contains items including the title of the article, media type (i.e. video, article, etc.), author, short excerpt, content keywords, date of publication, and various other attributes. This output can be modified by changing the source code. The information for each article is extracted and stored within the user-specified database. 
+
+The functionality of this tool allows the user to step through ten “pages” of the same search, up to the 100th result, the user is thus limited to only retrieve 100 results per search. Each query submission can retrieve up to 10 results, and each developer key gets 100 queries a day for free. After that, each 1000 queries used in a day is $5 and the user can submit up to 10,000 queries a day. This constraint limits the users number of searches (100 free). These (number of search results and number of searches) necessitate the development of the of the time-step method within the algorithm, which must be calibrated for each individual run, and is discussed later.
 
 
 **(ii) Software Inputs**
 
-Articulate requires a set of comma-separated-values (csv) and string inputs. 
+Articulate requires a set of comma-separated values (csv) and string inputs. 
 
-One distinct csv input: a csv file that contains the specific news websites to be searched and the code to access each website-specific dictionary necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. 
+Csv input: a csv file that contains the specific news websites to be searched and the code to access each website-specific dictionary. The dictionary for each news source is based on examining how newspapers store their online information. necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. 
 
-String inputs include: 
-    (1) Developer Key(s) 
-    (2) Search term(s) 
-    (3) Include term(s)
-    (4) Or term(s)- terms that could also be included in a search, but do not necessarily need to be present i.e. if you were searching for articles on drought, these terms could be water or snow), 
-    (5) the date range of interest, 
-    (6) the date step size (the date step size is the time interval to be used in the representation of results), and 
-    (7) the name of the database in which the information should be stored. It should be noted that all terms in the query are case sensitive (search, include, and or terms). All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
+String inputs: 
+1. Developer Key(s) 
+2. Search term(s) 
+3. Include term(s)
+4. Or term(s)- terms that could also be included in a search, but do not necessarily need to be present i.e. if you were searching for articles on drought, these terms could be water or snow)
+5. Date range of interest- from a certain date to the present
+6. Date step size- the time interval to be used in the representation of results
+7. Name of the database in which the information should be stored. 
+
+It should be noted that all terms in the query are case sensitive (search, include, and or terms). All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
 
 
 **(iii) Software Outputs**
 
-Articulate produces two types of spreadsheet outputs. The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. The second output is a database file containing important identifying information about each article such as date published, title, author, and more.
+Articulate produces two types of spreadsheet outputs: 
 
-1) Reading the Database File
+1) The Database File
    
-   If the type (ie. article, image, video, etc) of a specific result cannot be determined, the title is returned as "miss" and no other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of range".
+   The database file contains important identifying information about each article with the following headers: site,	search, title, day, year, media_type, and further_info. If the type of media (ie. article, image, video, etc) of a result cannot be determined, the title is returned as "miss" and no other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of range".
         
 2) The Dataframe File (Tally File)
    
-   The dataframe files will return a tally count for each source in each month. Each file returned will be for an individual              search.
+   The dataframe files will return a tally count for each source in each month. One file returned will be for each main search term.The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. 
     
 
 **(iv) Set up**
