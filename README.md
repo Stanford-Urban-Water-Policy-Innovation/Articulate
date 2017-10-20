@@ -9,13 +9,13 @@ News media plays an important role shaping public opinion and attitudes. However
 ## Table of Contents 
 1.	Installation
 2.	Usage
-    (i) Background
-    (ii) Software Inputs
-    (iii) Software Outputs
-    (iv) Set up
-    (v) Executing Articulate 
-        (a) via the GUI
-        (b) via the script
+    (i) Background  
+    (ii) Software Inputs  
+    (iii) Software Outputs  
+    (iv) Set up  
+    (v) Executing Articulate  
+        (a) via the GUI  
+        (b) via the script  
 3.	Contributing
 4.  GitHub Repository
 5.	Credits
