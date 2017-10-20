@@ -9,16 +9,13 @@ News media plays an important role shaping public opinion and attitudes. However
 ## Table of Contents 
 1.	Installation
 2.	Usage
-
     (i) Background
-    
     (ii) Software Inputs
-    
     (iii) Software Outputs
-    
     (iv) Set up
-    
-    (v) Executing Articulate
+    (v) Executing Articulate 
+        (a) via the GUI
+        (b) via the script
 3.	Contributing
 4.  GitHub Repository
 5.	Credits
@@ -43,9 +40,12 @@ The functionality of this tool allows the user to step through ten “pages” o
 
 Articulate requires a set of comma-separated values (csv) and string inputs. 
 
-Csv input: a csv file that contains the specific news websites to be searched and the code to access each website-specific dictionary. The dictionary for each news source is based on examining how newspapers store their online information. necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. 
+1) Csv input: 
 
-String inputs: 
+The csv file contains the specific news websites to be searched and the code to access each website-specific dictionary. The dictionary for each news source is based on examining how newspapers store their online information. necessary to extract items of information from the search results. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. 
+
+2) String inputs: 
+
 1. Developer Key(s) 
 2. Search term(s) 
 3. Include term(s)
@@ -63,11 +63,11 @@ Articulate produces two types of spreadsheet outputs:
 
 1) The Database File
    
-   The database file contains important identifying information about each article with the following headers: site,	search, title, day, year, media_type, and further_info. If the type of media (ie. article, image, video, etc) of a result cannot be determined, the title is returned as "miss" and no other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of range".
+The database file contains important identifying information about each article with the following headers: site,	search, title, day, year, media_type, and further_info. If the type of media (ie. article, image, video, etc) of a result cannot be determined, the title is returned as "miss" and no other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of range".
         
 2) The Dataframe File (Tally File)
    
-   The dataframe files will return a tally count for each source in each month. One file returned will be for each main search term.The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. 
+The dataframe files will return a tally count for each source in each month. One file returned will be for each main search term.The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. 
     
 
 **(iv) Set up**
@@ -81,7 +81,9 @@ Articulate produces two types of spreadsheet outputs:
 6. Test your search on a smaller time-frame to better approximate your appropriate time-step size
 
 
-**(v) Executing Articulate using the GUI**
+**(v) Executing Articulate**
+
+*** (a) via the GUI
 
 1. Run Articulate.py
 2. Input initial parameters
@@ -100,6 +102,8 @@ Articulate produces two types of spreadsheet outputs:
 5. When resetting developer keys:
     
     >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the program will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
+
+*** (b) via the script
 
 ## 3. GitHub Repository
 
