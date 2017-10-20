@@ -14,8 +14,8 @@ News media plays an important role shaping public opinion and attitudes. However
     (iii) Software Outputs  
     (iv) Set up  
     (v) Executing Articulate  
-        ...(a) via the GUI  
-        ...(b) via the script  
+        (a) via the GUI  
+        (b) via the script  
 3.	Contributing
 4.  GitHub Repository
 5.	Credits
