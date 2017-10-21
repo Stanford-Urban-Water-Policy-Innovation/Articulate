@@ -43,7 +43,7 @@ Articulate requires one comma-separated values (csv) input and multiple string i
 
 **1) Csv input:**  
 
-1. Media Sites- The csv file contains the specific news websites to be searched and the code used access each website-specific dictionary. The dictionary for each news source must be manually determined by examining how newspapers store their online information. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. The "ALL" row is a default for the most common dictionaries used by news sources. 
+1. Media Sites- a csv file containing the specific news websites to be searched and the code used access each website-specific dictionary. The dictionary for each news source must be manually determined by examining how newspapers store their online information. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. The "ALL" row is a default for the most common dictionaries used by news sources. 
 
     The headers in the csv file are:    
     site, url, type, date, keyword, title, type2, keyword2
@@ -57,11 +57,11 @@ Articulate requires one comma-separated values (csv) input and multiple string i
 3. Time Step Size- the time interval to be used in the representation of results    
 4. Number of Developer Keys- multiple developer keys may be required depending on the size (number of Search Terms, time period length and number of websites to search) of the query
 5. Developer Key(s)- from Google CSE 
-6. Search term(s) 
-7. Or Terms- terms that could also be included in a search, but do not necessarily need to be present i.e. if you were searching for articles on drought, these terms could be water or snow)
-8. Include term(s)
+6. Search term(s)- The main search term for the query    
+7. Or terms- defined by google as "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms.     
+8. Include term(s)- must be found in each result in addition to the initial search term. Google defines these as "exactTerms." It is suggested that each search only have one associated Include term.    
 
-It should be noted that Search, Or, and Include terms in the query are case sensitive. 
+The search will be performed for the Search term AND one or more of the OR terms AND all Include terms. It should be noted that Search, Or, and Include terms in the query are case sensitive.    
 
 ### (iii) Software Outputs
 
@@ -106,15 +106,7 @@ There are two ways to run Articulate- through a GUI or manually:
 2. Input initial parameters
 3. When inputting searches:
 
-    >Once you specify a search you would like articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.
-
-4. When inputting "or" and "include" terms:
-
-    >The search will be performed for the main search term AND one or more of the "or" terms AND all "include" terms.
-    
-    >"or" terms, as defined by google, "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." These are input for each search specified when running articulate. 
-    
-   >"include" terms must be found in each result in addition to the initial search term. Google defines these as "exactTerms." It is suggested that each search only have one associated include term.
+    >Once you specify a search you would like articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.   
    
 5. When resetting developer keys:
     
@@ -124,9 +116,11 @@ There are two ways to run Articulate- through a GUI or manually:
 
 ## 4. Limitations
 
+
+
 ## 5. Contributing
 
-We are looking to refine the method for finding the site specific code, making the program more user friendly, and expanding the option to search within different time periods (instead of just from the present looking backwards). For more information about contributions, please contact the noted contact below.
+We are looking to refine the method for finding the site specific code, making the program more user friendly, and expanding the option to search within different time periods (instead of only from the present looking backwards). For more information about contributions, please contact the noted contact below.
 
 ## 6. Credits
 This code was developed by Nick Roby at Stanford University. 
