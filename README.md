@@ -43,12 +43,12 @@ Articulate requires one comma-separated values (csv) input and multiple string i
 
 **1) Csv input:**  
 
-1. Media Sites File- The csv file contains the specific news websites to be searched and the code used access each website-specific dictionary. The dictionary for each news source must be manually determined by examining how newspapers store their online information. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. The "ALL" row is a default for the most common dictionaries used by news sources. If you are unsure of the dictionary for your wesite of interest, a good place to start is by copying the information in the "ALL" line and replacing "site" and "url" with your webiste of interest. 
+1. Media Sites- The csv file contains the specific news websites to be searched and the code used access each website-specific dictionary. The dictionary for each news source must be manually determined by examining how newspapers store their online information. This file also includes an "ALL" row which is required to run the script and is always the last row of the input file. The "ALL" row is a default for the most common dictionaries used by news sources. 
 
-The headers in the csv file are:    
-site, url, type, date, keyword, title, type2, keyword2
+    The headers in the csv file are:    
+    site, url, type, date, keyword, title, type2, keyword2
 
-The *codes.sites.csv* file in this repository includes the dictionaries for nine widely circulated national and California newspapers. 
+    The *codes.sites.csv* file in this repository includes the dictionaries for nine widely circulated national and         California newspapers. 
 
 **2) String inputs:**  
 
@@ -61,7 +61,7 @@ The *codes.sites.csv* file in this repository includes the dictionaries for nine
 7. Or Terms- terms that could also be included in a search, but do not necessarily need to be present i.e. if you were searching for articles on drought, these terms could be water or snow)
 8. Include term(s)
 
-It should be noted that all terms in the query are case sensitive (search, include, and or terms). All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
+It should be noted that Search, Or, and Include terms in the query are case sensitive. 
 
 ### (iii) Software Outputs
 
@@ -81,16 +81,18 @@ The dataframe files will return a tally count for each source in each Time Step 
 
 ### (iv) Set up
 
-1. Download Articulate folder which contains the Articulate.py Module as well as Articulations.py and an example Media Sites File.
-2. Download all necessary modules.
-3. Obtain a developer key(s). 
-4. Create Input File (file should maintain the same format exemplified in the example given)
-  > Note that the creation of the file containing the site specific code may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If this is too complicated, there is a suggested line of code that is available in the example.
+1. Download the Articulate or Articulate_script folder which contains the Articulate.py Module, Articulations.py, and an example Media Sites file (codes.sites.csv).
+2. Download all necessary Python modules.
+3. Obtain developer key(s) from Google CSE. 
+4. Create or modify Media Sites input file    
+    * File should maintain the same format exemplified in the example given
+    * Adding new news sources, which requires understanding how websites store article information,may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If you are unsure of the dictionary structure for your wesite of interest, a good place to start is by copying the information in the "ALL" line and replacing "site" and "url" with your webiste of interest. 
 5. Determine your search requirements
-6. Test your search on a smaller time-frame to better approximate your appropriate time-step size
+6. ***Test your search on a short time-frame to better approximate your appropriate time-step size and the number of developer keys required***
 
 ## 3. GitHub Repository and Executing Articulate
 
+All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
 There are two ways to run Articulate- through a GUI or manually:
 
 1. The code in the Articulate folder uses a GUI.
@@ -120,19 +122,17 @@ There are two ways to run Articulate- through a GUI or manually:
 
 **(b) via the script**
 
-## 4. 
+## 4. Limitations
 
 ## 5. Contributing
 
 We are looking to refine the method for finding the site specific code, making the program more user friendly, and expanding the option to search within different time periods (instead of just from the present looking backwards). For more information about contributions, please contact the noted contact below.
-
 
 ## 6. Credits
 This code was developed by Nick Roby at Stanford University. 
 
 ## 7. License 
 See copyright.txt and LICENSE for more information.
-
 
 ## 8. Contact
 For more information about Stanford's Urban Water Policy and Innovation Team please contact Newsha Ajami, Director of Urban Water Policy at newsha at stanford.edu. 
