@@ -94,7 +94,9 @@ Articulate can be executed using a GUI (Articulate.py) or directly in the script
 
 **(a) via the GUI**
 
-1. Run Articulate.py. The other python file in the folder, Articulations.py, is required to run the program and should be left untouched. 
+1. Download the files from the Articluate folder. 
+
+2. Run Articulate.py. The other python file in the folder, Articulations.py, is required to run the program and should be left untouched. 
 
 2. Input parameters through a series of pop-up boxes labelled tk through tk#7.    
    
@@ -108,7 +110,11 @@ The program submits 100 query submissions per developer key. If Articulate reach
 
 **(b) via the script**
 
-The code in the Example_Script folder does not use a GUI and is run as a Python script. If you do not want to use the GUI, you can fork and modify this code to fit your needs. 
+1. Download the files in the Example_Script folder. 
+
+2. Fork and modify the code to fit your needs, including manually hardcoding the input parameters.
+
+3. Run Articulate_script.py.
 
 ## 3. Limitations
 
