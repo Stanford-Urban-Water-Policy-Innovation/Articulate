@@ -52,7 +52,7 @@ Articulate requires one comma-separated values (csv) input and multiple string i
 4. Number of Developer Keys- multiple developer keys may be required depending on the size (number of Search Terms, time period length and number of websites to search) of the query
 5. Developer Key(s)- from Google CSE 
 6. Search term(s)- the main search term for the query    
-7. Or term(s)- defined by google as "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms, and Or terms are defined seperately for each Search term.  
+7. Or term(s)- defined by Google as "additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms, and Or terms are defined seperately for each Search term.  
 8. Include term(s)- must be found in each result in addition to the initial search term. Google defines these as "exactTerms." It is suggested that each search only have one associated Include term.    
 
 The search will be performed for the Search term AND one or more of the OR terms AND all Include terms. It should be noted that Search, Or, and Include terms in the query are case sensitive.    
@@ -120,7 +120,7 @@ The program submits 100 query submissions per developer key. If Articulate reach
 
 Users should consider some of the challenges and limitations that arise from the nature of this tool. In particular, this software relies on Google’s CSE API, a free online tool to retrieve information similar to the way a user would perform a Google Search. Because this method requires news media to be present in the internet, in a recognizable online format, Articulate is inherently limited to applications in recent decades, and may be insufficient when the purpose of the study is to assess multi-decadal trends expanding prior to the internet era. This is coupled with the limitation that Articulate searches from a certain date to the present, thus it is most practical to search for articles within a relatively recent time period. 
 
-Similarly, because Articulate goes through a mechanistic process of looking for relevant information in the form of specific keywords and specific dates in news articles, there may be cases where results are falsely reported despite being irrelevant (e.g. a sports team in a winning drought, a flood of support for charity). ***Users should be careful to manually check Articulate output results for relevance as needed.*** This challenges is also faced by users querying from proprietary databases.
+Similarly, because Articulate goes through a mechanistic process of looking for relevant information in the form of specific keywords and specific dates in news articles, there may be cases where results are falsely reported despite being irrelevant (e.g. a sports team in a winning drought, a flood of support for charity). ***Users should be careful to manually check Articulate output results for relevance as needed.*** This challenge is also faced by users querying from proprietary databases.
 
 ## 4. Contributing
 
