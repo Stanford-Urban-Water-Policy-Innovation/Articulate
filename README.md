@@ -5,28 +5,23 @@ A search tool for quantifying news media coverage
 
 News media plays an important role shaping public opinion and attitudes. However, current proprietary databases used for media investigation can be expensive, rigid, and limited in scope. To address these challenges, we developed Articulate, an open-source, flexible tool for discovering, compiling, and quantifying newspaper coverage on a user-specified topic. Articulate is written in Python and interfaces with Google Custom Search Engine (CSE) API to allow the user to extract, classify, represent, and store information from various media sources in a functional database. Articulate offers equal and sometimes greater data coverage than produced by comparable proprietary databases. 
 
-
 ## Table of Contents    
 1.	Installation
 2.	Usage  
     (i) Background  
-    (ii) Software Inputs  
-    (iii) Software Outputs  
+    (ii) Inputs  
+    (iii) Outputs  
     (iv) Set up  
     (v) GitHub Repository and Executing Articulate     
-     * via the GUI  
-     * via the script  
 3.  Limitaions    
 4.	Contributing
-6.	Credits
-7.	License
-8.  Contact
-
+5.	Credits
+6.	License
+7.  Contact
 
 ## 1. Installation    
 
 The software environment used by this program is Python version 2.7 with the following modules:  csv.py, time.py, datetime.py, googleapiclient.discovery.py, ast.py, numpy.py, pandas.py, sys.py, dateutil.py, CookieJar.py, urllib.py, urllib2.py, and Tkinter.py. The program uses Google CSE API client, which requires internet access for use. The user must also create an account with Google CSE API client to obtain an API key and must also set up their custom search engine (see https://developers.google.com/custom-search/docs/overview for more information). Information about installing this API is found here: https://developers.google.com/api-client-library/python/start/installation.
-
 
 ## 2. Usage
 
@@ -36,8 +31,7 @@ The backbone of this software is the Google CSE API client, a tool that allows t
 
 The functionality of this tool allows the user to step through ten “pages” of the same search, up to the 100th result, the user is thus limited to only retrieve 100 results per search. Each query submission can retrieve up to 10 results, and each developer key gets 100 queries a day for free. After that, each 1000 queries used in a day is $5 and the user can submit up to 10,000 queries a day. This constraint limits the users number of searches (100 free). These (number of search results and number of searches) necessitate the development of the of the time-step method within the algorithm, which must be calibrated for each individual run, and is discussed later.
 
-
-## (ii) Software Inputs
+### (ii) Software Inputs
 
 Articulate requires one comma-separated values (csv) input and multiple string inputs: 
 
@@ -80,11 +74,9 @@ day | NA2, fell outside of range
 year | NA_out, NA2, not yet found2  
 media_type | false_reporting2, pass1, pass2  
 
-
 **2) The Dataframe File(s) (the Tally File(s))**
    
-The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. These dataframes report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). While the Database file is named by the user, the Dataframes are named automatically based on the Search terms and date of search. 
-    
+The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. These dataframes report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). While the Database file is named by the user, the Dataframes are named automatically based on the Search terms and date of search.    
 
 ### (iv) Set up
 
@@ -118,23 +110,22 @@ The program submits 100 query submissions per developer key. If Articulate reach
 
 The code in the Example_Script folder does not use a GUI and is run as a Python script. If you do not want to use the GUI, you can fork and modify this code to fit your needs. 
 
-## 4. Limitations
+## 3. Limitations
 
 Users should consider some of the challenges and limitations that arise from the nature of this tool. In particular, this software relies on Google’s CSE API, a free online tool to retrieve information similar to the way a user would perform a Google Search. Because this method requires news media to be present in the internet, in a recognizable online format, Articulate is inherently limited to applications in recent decades, and may be insufficient when the purpose of the study is to assess multi-decadal trends expanding prior to the internet era. This is coupled with the limitation that Articulate searches from a certain date to the present, thus it is most practical to search for articles within a relatively recent time period. 
 
-Similarly, because Articulate goes through a mechanistic process of looking for relevant information in the form of specific keywords and specific dates in news articles, there may be cases where results are falsely reported despite being irrelevant (e.g. a sports team in a winning drought, a flood of support for charity). ***Users should be careful to check Articulate output results for relevance as needed.*** This challenges is also faced by users querying from proprietary databases.
+Similarly, because Articulate goes through a mechanistic process of looking for relevant information in the form of specific keywords and specific dates in news articles, there may be cases where results are falsely reported despite being irrelevant (e.g. a sports team in a winning drought, a flood of support for charity). ***Users should be careful to manually check Articulate output results for relevance as needed.*** This challenges is also faced by users querying from proprietary databases.
 
-
-## 5. Contributing
+## 4. Contributing
 
 We are looking to refine the method for finding the site specific code, making the program more user friendly, and expanding the option to search within different time periods (instead of only from the present looking backwards). For more information about contributions, please contact the noted contact below.
 
-## 6. Credits
+## 5. Credits
 This code was developed by Nick Roby at Stanford University. 
 
-## 7. License 
+## 6. License 
 See copyright.txt and LICENSE for more information.
 
-## 8. Contact
+## 7. Contact
 For more information about Stanford's Urban Water Policy and Innovation Team please contact Newsha Ajami, Director of Urban Water Policy at newsha at stanford.edu. 
 
