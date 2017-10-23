@@ -127,11 +127,11 @@ Similarly, because Articulate goes through a mechanistic process of looking for 
 We are looking to refine the method for finding the site specific code, making the program more user friendly, and expanding the option to search within different time periods (instead of only from the present looking backwards). For more information about contributions, please contact the noted contact below.
 
 ## 5. Credits
-This code was developed by Nick Roby at Stanford University. 
+This code was developed by Nick Roby at Stanford University with contributions by Patricia Gonzales, Kim Quesnel, and Newsha Ajami.
 
 ## 6. License 
 See copyright.txt and LICENSE for more information.
 
 ## 7. Contact
-For more information about Stanford's Urban Water Policy and Innovation Team please contact Newsha Ajami, Director of Urban Water Policy at newsha at stanford.edu. 
+For more information about Articulate or Stanford's Urban Water Policy and Innovation Team please contact Newsha Ajami, Director of Urban Water Policy, at newsha at stanford.edu. 
 
