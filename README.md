@@ -52,13 +52,13 @@ Articulate requires one comma-separated values (csv) input and multiple string i
 
 **2) String inputs:**  
 
-1. Output File Name- name of the database (.csv) in which the information should be stored    
+1. Output File Name- name of the database (.csv) in which the output Database file should be stored    
 2. Reference Date- the start point in the time period of the search inquiry, until present     
 3. Time Step Size- the time interval to be used in the representation of results    
 4. Number of Developer Keys- multiple developer keys may be required depending on the size (number of Search Terms, time period length and number of websites to search) of the query
 5. Developer Key(s)- from Google CSE 
-6. Search term(s)- The main search term for the query    
-7. Or term(s)- defined by google as "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms.     
+6. Search term(s)- the main search term for the query    
+7. Or term(s)- defined by google as "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms, and Or terms are defined seperately for each Search term.  
 8. Include term(s)- must be found in each result in addition to the initial search term. Google defines these as "exactTerms." It is suggested that each search only have one associated Include term.    
 
 The search will be performed for the Search term AND one or more of the OR terms AND all Include terms. It should be noted that Search, Or, and Include terms in the query are case sensitive.    
@@ -83,7 +83,7 @@ media_type | false_reporting2, pass1, pass2
 
 **2) The Dataframe File(s) (the Tally File(s))**
    
-The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. These dataframes report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month).
+The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. These dataframes report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). While the Database file is named by the user, the Dataframes are named automatically based on the Search terms and date of search. 
     
 
 ### (iv) Set up
@@ -102,15 +102,17 @@ Articulate can be executed using a GUI (Articulate.py) or directly in the script
 
 **(a) via the GUI**
 
-1. Run Articulate.py 
-2. Input parameters in pop-up boxes tk through tk#7 
-3. When inputting searches:
+1. Run Articulate.py. The other python file in the folder, Articulations.py, is required to run the program and should be left untouched. 
 
-    >Once you specify a search you would like articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.   
-   
-5. When resetting developer keys:
+2. Input parameters through a series of pop-up boxes tk through tk#7. 
+
+*** In the GUI, once you enter an input, you must also select it's check box. You can specify multiple searches to query. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. Also, as stated above, each search gets it's own specified "or" terms.***  
     
-    >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the program will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
+3. Output files will be in the same folder as the code and input file. 
+
+A note about developer keys:
+
+   >The program submits 100 query submissions per developer key. If Articulate reaches the maximum number of query submissions for a developer key and you have input multiple keys, it will automatically move to the next key. However, if the program reaches the maximum number of queries for all devleoper keys, the program will ask you to reset your developer keys. You can reset the developer key to any of the input keys and it will resstart at this number developer key, excluding all developer keys input before that. Then, the program will wait until midnight, which is when the query counts reset, and then continue to run. You can also type 'Exit', and the program will stop.
 
 **(b) via the script**
 
@@ -118,6 +120,9 @@ The code in the Example_Script folder does not use a GUI and is run as a Python 
 
 ## 4. Limitations
 
+Users should consider some of the challenges and limitations that arise from the nature of this tool. In particular, this software relies on Google’s CSE API, a free online tool to retrieve information similar to the way a user would perform a Google Search. Because this method requires news media to be present in the internet, in a recognizable online format, Articulate is inherently limited to applications in recent decades, and may be insufficient when the purpose of the study is to assess multi-decadal trends expanding prior to the internet era. This is coupled with the limitation that Articulate searches from a certain date to the present, thus it is most practical to search for articles within a relatively recent time period. 
+
+Similarly, because Articulate goes through a mechanistic process of looking for relevant information in the form of specific keywords and specific dates in news articles, there may be cases where results are falsely reported despite being irrelevant (e.g. a sports team in a winning drought, a flood of support for charity). ***Users should be careful to check Articulate output results for relevance as needed.*** This challenges is also faced by users querying from proprietary databases.
 
 
 ## 5. Contributing
