@@ -58,7 +58,7 @@ Articulate requires one comma-separated values (csv) input and multiple string i
 4. Number of Developer Keys- multiple developer keys may be required depending on the size (number of Search Terms, time period length and number of websites to search) of the query
 5. Developer Key(s)- from Google CSE 
 6. Search term(s)- The main search term for the query    
-7. Or terms- defined by google as "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms.     
+7. Or term(s)- defined by google as "[Provide] additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms." Each Search term can have multiple Or terms.     
 8. Include term(s)- must be found in each result in addition to the initial search term. Google defines these as "exactTerms." It is suggested that each search only have one associated Include term.    
 
 The search will be performed for the Search term AND one or more of the OR terms AND all Include terms. It should be noted that Search, Or, and Include terms in the query are case sensitive.    
@@ -69,41 +69,41 @@ Articulate produces two types of spreadsheet outputs:
 
 **1) The Database File**
    
-The database file contains important identifying information about each article with the following headers: site, search, title, day, year, media_type, and further_info.    
+The database file contains identifying information for each article with the following headers: site, search, title, day, year, media_type, and further_info. The database file contains both hits and misses: 
+* Hits are articles meeting all query criteria. These articles are counted in the tally database. 
+* Misses should be manually removed from the database and are identified by incomplete information in the spreadsheet. The following errors define misses:  
 
-***CHECK THIS***
-If the type of media (ie. article, image, video, etc) of a result cannot be determined, the title is returned as "miss" and no other information is obtained (the date information will return as NA). If an article's date cannot be found, it will simply return as NA. If an article's date appears to be outside the spcified time window, the date will return as "Fell outside of range".
-        
-**2) The Dataframe File(s) (Tally File(s))**
+Column | Error Code  
+--- | ---  
+title | miss
+day | NA2, fell outside of range  
+year | NA_out, NA2, not yet found2  
+media_type | false_reporting2, pass1, pass2  
+
+
+**2) The Dataframe File(s) (the Tally File(s))**
    
-The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. The first kind of outputs contain the number of articles published by each source for a certain search. These data frames report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). One spreadsheet is produced for each keyword query. 
+The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. These dataframes report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month).
     
 
 ### (iv) Set up
 
 1. Download the Articulate or Articulate_script folder which contains the Articulate.py Module, Articulations.py, and an example Media Sites file (codes.sites.csv).
-2. Download all necessary Python modules.
+2. Download all necessary Python modules described above.
 3. Obtain developer key(s) from Google CSE. 
 4. Create or modify Media Sites input file    
-    * File should maintain the same format exemplified in the example given
-    * Adding new news sources, which requires understanding how websites store article information,may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If you are unsure of the dictionary structure for your wesite of interest, a good place to start is by copying the information in the "ALL" line and replacing "site" and "url" with your webiste of interest. 
-5. Determine your search requirements
-6. ***Test your search on a short time-frame to better approximate your appropriate time-step size and the number of developer keys required***
+    * File should maintain the same format as the example file
+    * Adding new news sources, which requires understanding how websites store article information, may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If you are unsure of the dictionary structure for your wesite of interest, a good place to start is by copying the information in the "ALL" line and replacing "site" and "url" with your webiste of interest. 
+5. Determine your search requirements and then ***test your search on a short time-frame to better approximate your appropriate time-step size and the number of developer keys required***. 
 
-## 3. GitHub Repository and Executing Articulate
+### (v). GitHub Repository and Executing Articulate
 
-All of these are input either using a GUI (Articulate.py) or directly in the script (Articulate_script.py). 
-There are two ways to run Articulate- through a GUI or manually:
-
-1. The code in the Articulate folder uses a GUI.
-
-2. The code in the Example_Script folder does not use a GUI and is run as a Python script. If you do not want to use the GUI, you can fork and modify this code to fit your needs. 
-#### (v) Executing Articulate
+Articulate can be executed using a GUI (Articulate.py) or directly in the script (Articulate_script.py):
 
 **(a) via the GUI**
 
-1. Run Articulate.py
-2. Input initial parameters
+1. Run Articulate.py 
+2. Input parameters in pop-up boxes tk through tk#7 
 3. When inputting searches:
 
     >Once you specify a search you would like articulate to query, you must enter it AND select it's check box. You can specify multiply searches to query, however, call of them must be selected. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. As also stated below, each search gets it's own specified "or" terms.   
@@ -113,6 +113,8 @@ There are two ways to run Articulate- through a GUI or manually:
     >If the program runs and submits 100 query submissions per developer key, reaching the maximum number of query submissions for a developer key, the program will ask you to reset your developer keys, to any developer key you desire (Each developer key has a number associated with it, whichever number you input, it will rese at this number developer key, and will exclude all developer keys input before that). Once doing this the program will wait until midnight, which is when the query counts reset, and then the program will continue to run. You can also type 'Exit', and the program will stop.
 
 **(b) via the script**
+
+The code in the Example_Script folder does not use a GUI and is run as a Python script. If you do not want to use the GUI, you can fork and modify this code to fit your needs. 
 
 ## 4. Limitations
 
