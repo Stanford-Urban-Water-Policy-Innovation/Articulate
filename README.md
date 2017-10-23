@@ -104,15 +104,15 @@ Articulate can be executed using a GUI (Articulate.py) or directly in the script
 
 1. Run Articulate.py. The other python file in the folder, Articulations.py, is required to run the program and should be left untouched. 
 
-2. Input parameters through a series of pop-up boxes tk through tk#7. 
-
-*** In the GUI, once you enter an input, you must also select it's check box. You can specify multiple searches to query. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. Also, as stated above, each search gets it's own specified "or" terms.***  
+2. Input parameters through a series of pop-up boxes tk through tk#7.    
+   
+***In the GUI, once you enter an input, you must also select it's check box.*** You can specify multiple searches to query. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. Also, as stated above, each search gets it's own specified "or" terms.  
     
 3. Output files will be in the same folder as the code and input file. 
 
-A note about developer keys:
+A note about developer keys: 
 
-   >The program submits 100 query submissions per developer key. If Articulate reaches the maximum number of query submissions for a developer key and you have input multiple keys, it will automatically move to the next key. However, if the program reaches the maximum number of queries for all devleoper keys, the program will ask you to reset your developer keys. You can reset the developer key to any of the input keys and it will resstart at this number developer key, excluding all developer keys input before that. Then, the program will wait until midnight, which is when the query counts reset, and then continue to run. You can also type 'Exit', and the program will stop.
+The program submits 100 query submissions per developer key. If Articulate reaches the maximum number of query submissions for a developer key and you have input multiple keys, it will automatically move to the next key. However, if the program reaches the maximum number of queries for all devleoper keys, the program will ask you to reset your developer keys. You can reset the developer key to any of the input keys and it will resstart at this number developer key, excluding all developer keys input before that. Then, the program will wait until midnight, which is when the query counts reset, and then continue to run. You can also type 'Exit', and the program will stop.
 
 **(b) via the script**
 
