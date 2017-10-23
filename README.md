@@ -74,7 +74,7 @@ day | NA2, fell outside of range
 year | NA_out, NA2, not yet found2  
 media_type | false_reporting2, pass1, pass2  
 
-**2) The Dataframe File(s) (the Tally File(s))**
+**2) The Dataframe File(s) (also known as the Tally File(s))**
    
 The dataframe files will return a tally count for each source in each Time Step Size period. One file will be returned for each Search Term. These dataframes report tallied results, counting the number of desired articles occurring at specified time intervals (e.g number of articles each month). While the Database file is named by the user, the Dataframes are named automatically based on the Search terms and date of search.    
 
@@ -83,20 +83,20 @@ The dataframe files will return a tally count for each source in each Time Step 
 1. Download the Articulate or Articulate_script folder which contains the Articulate.py Module, Articulations.py, and an example Media Sites file (codes.sites.csv).
 2. Download all necessary Python modules described above.
 3. Obtain developer key(s) from Google CSE. 
-4. Create or modify Media Sites input file    
+4. Create or modify Media Sites input file:    
     * File should maintain the same format as the example file
     * Adding new news sources, which requires understanding how websites store article information, may take time and practice. It is important to understand how to navigate a python dictionary when doing this to find how each news source stores article metadata. If you are unsure of the dictionary structure for your wesite of interest, a good place to start is by copying the information in the "ALL" line and replacing "site" and "url" with your webiste of interest. 
 5. Determine your search requirements and then ***test your search on a short time-frame to better approximate your appropriate time-step size and the number of developer keys required***. 
 
 ### (v). GitHub Repository and Executing Articulate
 
-Articulate can be executed using a GUI (Articulate.py) or directly in the script (Articulate_script.py):
+Articulate can be executed using a GUI (Articulate.py) or directly in the script (Articulate_script.py).    
 
 **(a) via the GUI**
 
 1. Run Articulate.py. The other python file in the folder, Articulations.py, is required to run the program and should be left untouched. 
 
-2. Input parameters through a series of pop-up boxes tk through tk#7.    
+2. Input parameters through a series of pop-up boxes labelled tk through tk#7.    
    
 ***In the GUI, once you enter an input, you must also select it's check box.*** You can specify multiple searches to query. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. Also, as stated above, each search gets it's own specified "or" terms.  
     
