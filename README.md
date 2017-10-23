@@ -98,7 +98,7 @@ Articulate can be executed using a GUI (Articulate.py) or directly in the script
 
 2. Run Articulate.py. The other python file in the folder, Articulations.py, is required to run the program and should be left untouched. 
 
-2. Input parameters through a series of pop-up boxes labelled tk through tk#7.    
+2. Input parameters through a series of pop-up boxes labelled tk through tk#(n) where n depends on the number of Search terms and Developer keys entered. With one developer key and one search term, the pop-up boxes will be tk through tk#7    
    
 ***In the GUI, once you enter an input, you must also select it's check box.*** You can specify multiple searches to query. The code will treat each search individually, however, the final database will exclude dublicates that may come about within multiple searches. Also, as stated above, each search gets it's own specified "or" terms.  
     
