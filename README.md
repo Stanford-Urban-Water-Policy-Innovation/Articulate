@@ -69,7 +69,7 @@ The database file contains identifying information for each article with the fol
 
 Column | Error Code  
 --- | ---  
-title | miss
+title | miss, duplicate-
 day | NA2, fell outside of range  
 year | NA_out, NA2, not yet found2  
 media_type | false_reporting2, pass1, pass2  
