@@ -108,6 +108,8 @@ A note about developer keys:
 
 The program submits 100 query submissions per developer key. If Articulate reaches the maximum number of query submissions for a developer key and you have input multiple keys, it will automatically move to the next key. However, if the program reaches the maximum number of queries for all devleoper keys, the program will ask you to reset your developer keys. You can reset the developer key to any of the input keys and it will resstart at this number developer key, excluding all developer keys input before that. Then, the program will wait until midnight, which is when the query counts reset, and then continue to run. You can also type 'Exit', and the program will stop.
 
+\****See the Articulate_ReadMe_Supplement.pdf file for screenshots showing the distinct steps for running Articulate through the GUI***\*
+
 **(b) via the script**
 
 1. Download the files in the Example_Script folder. 
