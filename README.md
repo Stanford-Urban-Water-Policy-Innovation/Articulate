@@ -67,12 +67,12 @@ The database file contains identifying information for each article with the fol
 * Hits are articles meeting all query criteria. These articles are counted in the tally database. 
 * Misses should be manually removed from the database and are identified by incomplete information in the spreadsheet. The following errors define misses:  
 
-Column | Error Code  
---- | ---  
-title | miss, duplicate-
-day | NA2, fell outside of range  
-year | NA_out, NA2, not yet found2  
-media_type | false_reporting2, pass1, pass2  
+Column | Error Code  | Description
+--- | ---  | ---
+title | miss, duplicate- | A "miss" error code indicates _Articulate_ was unable to retrieve a title from the article metadata. A "duplicate-" error indicates a title was retrieved but it is a duplicate of an article already tallied. 
+day | NA, fell outside of range  | "NA" errors indicate that _Articulate_ was not able to extract the publication year, or that the date is in an unrecognized format. A "fell outside of range" error indicates the date was found to fall outside of the user-specified time range, and the article is not tallied.
+year | NA_out, NA, not yet found  | "NA" and "not yet found" errors indicate that _Articulate_ was not able to extract the publication year, or that the date is in an unrecognized format. An "NA_out" error indicates the date was found to fall outside of the user-specified time range, and the article is not tallied.
+media_type | false_reporting, pass1, pass2  | _Articulate_ uses two different methods to atetmpt to retrieve the media type label. A "pass1" or "pass2" error indicates _Articulate_ was unable to confirm the media type as an article. A "false_reporting" error indicates _Articulate_ could not confirm that the article is relevant despite being pulled by CSE (i.e. the "search", "or", and "include" terms could not be found in the article headline or body).
 
 **2) The Dataframe File(s) (also known as the Tally File(s))**
    
