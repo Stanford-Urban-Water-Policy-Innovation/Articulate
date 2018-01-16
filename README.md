@@ -131,6 +131,9 @@ We are looking to refine the method for finding the site specific code, making t
 ## 5. Credits
 This code was developed by Nick Roby at Stanford University with contributions by Patricia Gonzales, Kim Quesnel, and Newsha Ajami.
 
+Please cite the following manuscript when referencing Articulate: 
+Roby, N. A., Gonzales, P., Quesnel, K. J., & Ajami, N. K. (2018). A novel search algorithm for quantifying news media coverage as a measure of environmental issue salience. Environmental Modelling & Software, 101, 249-255.
+
 ## 6. License 
 See copyright.txt and LICENSE for more information.
 
