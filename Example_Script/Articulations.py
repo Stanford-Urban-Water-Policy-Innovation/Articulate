@@ -15,11 +15,14 @@ import urllib2
 from cookielib import CookieJar
 from Tkinter import *
 
+today_str = '03-01-2006'
+current_day = datetime.strptime(today_str, '%m-%d-%Y').day
 #Using the specified time step the total timeframe is divided into time steps
 #The output is a formatted list of dates corresponding to each time window
 def getdate(time_step,refdate_str):
     ref = pd.Timestamp(refdate_str)
-    today = pd.Timestamp(datetime.now())
+    today_str = '03-01-2006'
+    today = datetime.strptime(today_str, '%m-%d-%Y')
     date_step = pd.date_range(
         start=ref,
         end=today)
@@ -68,7 +71,8 @@ def DKtest(DKcount,DKcheck,DKnum,current_day,DK,rerun_val):
                     sys.exit()
                 else:
                     print 'Expected Error'
-            current_day = datetime.now().day #left the loop, update current day
+        today_str = '03-01-2006'
+        current_day = datetime.strptime(today_str, '%m-%d-%Y').day
         DKcheck = DKcount
         print 'Switched DK to %s' %(DK[DKnum])
         res = ['Must Rerun']
