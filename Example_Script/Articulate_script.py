@@ -98,8 +98,9 @@ inclterms = {0:'include_term'}
 #_______________________________________________________________________________________________
 
 #set up variable dateres, used to restrict search results to after a user-specified refernce date
-today = datetime.now()
-current_day = datetime.now().day
+today_str = '03-01-2006'
+today = datetime.strptime(today_str, '%m-%d-%Y')
+current_day = datetime.strptime(today_str, '%m-%d-%Y').day
 daydelta = today - refdate
 past = int(daydelta.days)
 dateres = 'd%s' %(past)
@@ -163,7 +164,7 @@ for k in range(len(searchwords)): #for each searchword there is a new dictionary
                             current_day,
                             orterm_specific,
                             rerun_val,
-                            inclterms[k])
+                            inclterms)
                     n_res1 = res['queries']['request'][0]['count'] #first way to count results- results per query submission
                     n_res2 = int(res['queries']['request'][0]['totalResults']) #second way to count results- total results for query
                     if n_res1 > 0 and n_res2 > 0:
